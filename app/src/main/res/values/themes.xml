@@ -14,6 +14,6 @@
         <!-- Customize your theme here. -->
     </style>
     <style name="progressbar">
-        <item name="colorSecondary">#2B2A29</item>
+        <item name="colorSecondary">#464646</item>
     </style>
 </resources>
