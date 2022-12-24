@@ -2,40 +2,56 @@ package com.example.quizania;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.view.View;
+import android.view.WindowManager;
 import android.widget.ProgressBar;
+
+import com.sasank.roundedhorizontalprogress.RoundedHorizontalProgressBar;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class DashboardActivity extends AppCompatActivity {
 
-    ProgressBar progressBar;
-    int counter = 0;
+    CountDownTimer countDownTimer;
+    int timerValue;
+    RoundedHorizontalProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
+        progressBar = findViewById(R.id.progress_bar_1);
 
-    }
-
-    public void prog() {
-        progressBar = (ProgressBar) findViewById(R.id.progressBar);
-        final Timer t = new Timer();
-        TimerTask tt = new TimerTask() {
+        countDownTimer = new CountDownTimer(20000, 1000) {
             @Override
-            public void run() {
-                counter++;
-                progressBar.setProgress(counter);
-
-                if (counter == 100)
-                    t.cancel();
+            public void onTick(long millisUntilFinished) {
+                timerValue = timerValue-1;
+                progressBar.setProgress(timerValue);
             }
-        };
-        t.schedule(tt, 0, 1000);
 
+            @Override
+            public void onFinish() {
+                Dialog dialog = new Dialog(DashboardActivity.this, R.style.Dialog);
+                dialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_BLUR_BEHIND);
+                dialog.setContentView(R.layout.time_out);
+                dialog.findViewById(R.id.tryAgain).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(DashboardActivity.this, MainActivity.class);
+                        startActivity(intent);
+                    }
+                });
+                dialog.show();
+
+            }
+        }.start();
     }
+
+
 }

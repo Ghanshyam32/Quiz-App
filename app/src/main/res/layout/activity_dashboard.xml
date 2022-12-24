@@ -32,11 +32,24 @@
 
     </RelativeLayout>
 
-    <ProgressBar
-        android:id="@+id/progressBar"
+    <!--    <ProgressBar-->
+    <!--        android:id="@+id/progressBar"-->
+    <!--        style="?android:attr/progressBarStyleHorizontal"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content" />-->
+
+    <com.sasank.roundedhorizontalprogress.RoundedHorizontalProgressBar
+        android:id="@+id/progress_bar_1"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="@dimen/_4sdp"
+        android:indeterminate="false"
+        android:maxHeight="12dp"
+        android:minHeight="12dp"
+        android:progress="40"
+        app:backgroundColor="#000000"
+        app:progressColor="#F57F17"
+        tools:ignore="MissingClass" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -142,7 +155,6 @@
             android:textColor="@color/white"
             android:textSize="@dimen/_20sdp" />
     </LinearLayout>
-
 
 
 </LinearLayout>
