@@ -18,7 +18,7 @@ import java.util.TimerTask;
 public class DashboardActivity extends AppCompatActivity {
 
     CountDownTimer countDownTimer;
-    int timerValue;
+    int timerValue = 20;
     RoundedHorizontalProgressBar progressBar;
 
     @Override
@@ -31,13 +31,13 @@ public class DashboardActivity extends AppCompatActivity {
         countDownTimer = new CountDownTimer(20000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
-                timerValue = timerValue-1;
+                timerValue = timerValue - 1;
                 progressBar.setProgress(timerValue);
             }
 
             @Override
             public void onFinish() {
-                Dialog dialog = new Dialog(DashboardActivity.this, R.style.Dialog);
+                Dialog dialog = new Dialog(DashboardActivity.this);
                 dialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_BLUR_BEHIND);
                 dialog.setContentView(R.layout.time_out);
                 dialog.findViewById(R.id.tryAgain).setOnClickListener(new View.OnClickListener() {
@@ -52,6 +52,4 @@ public class DashboardActivity extends AppCompatActivity {
             }
         }.start();
     }
-
-
 }
