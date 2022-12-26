@@ -31,7 +31,7 @@ public class DashboardActivity extends AppCompatActivity {
     List<ModelClass> allQuestions;
     ModelClass modelClass;
     int index = 0;
-    TextView question, op1, op2, op3, op4;
+    TextView questionCard, op1, op2, op3, op4;
     CardView card1, card2, card3, card4;
 
 
@@ -72,17 +72,17 @@ public class DashboardActivity extends AppCompatActivity {
     }
 
     private void setAllData() {
-        question.setText(modelClass.getQues());
         op1.setText(modelClass.getAns1());
         op2.setText(modelClass.getAns2());
         op3.setText(modelClass.getAns3());
+        questionCard.setText(modelClass.getQues());
         op4.setText(modelClass.getAns4());
 
     }
 
     private void Hooks() {
         progressBar = findViewById(R.id.progress_bar_1);
-        question = findViewById(R.id.question);
+        questionCard = findViewById(R.id.question);
         op1 = findViewById(R.id.ans1);
         op2 = findViewById(R.id.ans2);
         op3 = findViewById(R.id.ans3);
@@ -90,7 +90,7 @@ public class DashboardActivity extends AppCompatActivity {
 
         card1 = findViewById(R.id.ans1_card);
         card2 = findViewById(R.id.ans2_card);
-        card2 = findViewById(R.id.ans3_card);
-        card2 = findViewById(R.id.ans4_card);
+        card3 = findViewById(R.id.ans3_card);
+        card4 = findViewById(R.id.ans4_card);
     }
 }
